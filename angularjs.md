@@ -76,10 +76,10 @@
 - ng-model="变量"
   - 获取表单元素的值，实现双向数据绑定
 
-  - ng-click=" "
+- ng-click=" "
     - 给指令所在元素绑定点击事件，不能写原生js代码
 
-  - ng-init
+- ng-init
     - 初始化数据
 
 ## 模块化
@@ -151,7 +151,7 @@
   	<input type="text" ng-model="val">
     	<div>{{val}}</div>
     	<button ng-click="setValue()">设置值</button>
-    	<button ng-click="setValue()">获取值</button>
+    	<button ng-click="getValue()">获取值</button>
     	<script src="node_modules/angular/angular.min.js"></script>
     	<script>
     		var app=angular.module('myApp',[]);
@@ -201,8 +201,8 @@
     ```html
     <ul>
       	<li><a href="#!/article/1/我是第1篇文章">我是第1篇文章</a></li>
-      	<li><a href="#!/article/1/我是第2篇文章">我是第2篇文章</a></li>
-      	<li><a href="#!/article/1/我是第3篇文章">我是第3篇文章</a></li>
+      	<li><a href="#!/article/2/我是第2篇文章">我是第2篇文章</a></li>
+      	<li><a href="#!/article/3/我是第3篇文章">我是第3篇文章</a></li>
     </ul>
     <script>
     	var app=angular.module('myApp',['ngRoute'])
@@ -266,7 +266,7 @@
 
 - 可以传递的参数有很多，不需要一一写出来
 
-- 所以，angularjs中传递参数不能依靠顺序而是名字
+- angularjs中传递参数不能依靠顺序而是名字
 
 - 如果形参名字改变了，angularjs就不知道要干什么了
 

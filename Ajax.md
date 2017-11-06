@@ -147,6 +147,17 @@
 + print_r()：输出复杂数据类型的结构，如数组
 + var_dump()：输出详细信息，如对象，数组
 
+```php
+$arr=array('itcast','今年','10岁了');
+//只能输出简单类型
+echo $arr;
+//输出详细信息
+print_r($arr);
+$hello='hello';
+//输出详细信息
+var_dump($hello);
+```
+
 ### 函数
 
 + PHP中有超过700个内建函数
@@ -190,19 +201,22 @@
 
 + 由客户端发起，规范为：请求行，请求头，请求主体
 + 请求行：
-  * GET /heima11/day02/03.form.php?username=xgg&password=1 HTTP/1.1
-  * POST /heima11/day02/03.form.php HTTP/1.1
+  * get方式会在地址后面拼接参数
+    *  /heima11/day02/03.form.php?username=xgg&password=1 HTTP/1.1
+  * post方式就是简单的地址
+    *  /heima11/day02/03.form.php HTTP/1.1
 + 请求头：
   * Host：localhost请求的主机
-  * User-Agent：很重要
-  * Accept：接受的文档MIME类型
-  * Accept-Language：可接受的语言
-  * Accept-Encoding：可接受的压缩格式
+  * User-Agent：很重要，包含客户端的信息
+  * Accept：接受的文档MIME类型，text/html，application/xhtml+xml等内容
+  * Accept-Language：可接受的语言，zh-CN等内容
+  * Accept-Encoding：可接受的压缩格式，gzip，deflate，sdch，br等内容
   * Cache-Control：max-age=0控制缓存
-  * Content-Type:application/x-www-form-urlencoded以post形式提交表单的时候，请求头中会设置，以get形式提交，则没有
+  * Content-Type：application/x-www-form-urlencoded以post形式提交表单的时候，请求头中会设置这一项，以get形式提交，则没有
   * Referer：从哪个URL跳转过来的
 + 请求主体：
-  * post方式，传递给服务端的数据。get方式，空的
+  * post方式，传递给服务端的数据
+  * get方式，空的
 
 ### 响应和响应报文
 
@@ -240,7 +254,7 @@
                 if(xhr.status==200) {
                     document.querySelector('.banner').innerHTML=xhr.responseText;
                 }
-            })
+            }
         }
     }
     var renderNav=function() {
@@ -351,7 +365,7 @@
 + 空格会被保留，所以不可有空格，不可以数字或点开头，大小写敏感
 + 不可交叉嵌套
 + 可以在标签里定义属性，属性双引号单引号都可以（浏览器自动修正成双引号）
-+ 特殊符号用实体 &gt;  &lt;  &nbsp;
++ 特殊符号用实体 & gt;& lt;& nbsp;
 + 注释写法和HTML一样，不能放在开头
 + 必须闭合（双标签）
 + xml本质是字符串，浏览器在解析的时候，会按照xml格式去预览
@@ -397,7 +411,7 @@
 + 不能使用模板外部变量（全局变量），例如$，window，console等
 + 默认渲染方式是字符串：<%= %>默认渲染方式是字符串，防止xss攻击（cross site scripting 跨站脚本攻击） <%=# %>默认渲染方式是html，从后台传过来的数据可以是 html标签
 + 简洁模板必须写在{{}}中
-+ {{each model}} {{/each}}默认索引$index 默认值$value
++ {{each model}} {{/each}}默认索引\$index 默认值\$value
 + {{each model as item i}} {{/each}}默认索引item值 i索引
 + {{if}}{{else}}{{/if}}分支
 + 简介模板不能定义变量
@@ -413,8 +427,8 @@
 + $(function() {})是将文档中主要元素加载出来
 + 图片还没有加载出来的时候，下面如果排新的子容器，就会把上面的图片盖住，出现图片黏连的情况
 + 两种解决方案：
-+ 需要用window.onload，先把图片都加载出来，防止这种情况发生
-+ 限定图片的尺寸，图片没有加载出来的时候，尺寸也可以先占空间，尺寸可以由后台数据传到前端，根据子容器的比例，算出图片的大小再进行设置
+  + 需要用window.onload，先把图片都加载出来，防止这种情况发生
+  + 限定图片的尺寸，图片没有加载出来的时候，尺寸也可以先占空间，尺寸可以由后台数据传到前端，根据子容器的比例，算出图片的大小再进行设置
 + 一部分浏览器有兼容问题，在动态渲染20个容器的时候，选择器可能会失效
 
 ## 跨域
@@ -433,7 +447,7 @@
 
 ### 其他
 
-+ hash name postMessage
++ hash、name、postMessage
 
 ### JSONP
 
@@ -456,6 +470,31 @@
 + 可以加具体的域名，比如http://yueban.com
 
 
+### jQuery提供的方法
 
+```javascript
+$.ajax({
+  //以何种方式进行传输
+  type:'post',
+  //地址
+  url:'../api/removeUser.php',
+  //传输的数据
+  data:{id:id},
+  //传输数据的类型，默认是json，有jsonp形式
+  dataType:'json',
+  //发送数据之前的函数
+  beforeSend:function(){
+      	$btn.addClass('btn-loading')
+  },
+  //成功之后的函数，可以传入数据
+  success:function(data){
+        $btn.removeClass('btn-loading');
+    	if(data.status=='ok'){
+        $deletModal.modal('hide');
+      	render();
+    }
+  }
+})
+```
 
 

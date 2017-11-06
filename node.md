@@ -5,32 +5,34 @@
 ### 相关文章
 
 - [JavaScript——历史与简介](http://www.cnblogs.com/ghost-xyx/p/4035615.html)
-
 - [深入浅出Node.js（一）：什么是Node.js](http://www.infoq.com/cn/articles/what-is-nodejs/)
-
 - [I/O事件概述](http://www.cnblogs.com/eric-nirnava/p/IO.html)
-
 - [理解Node.js事件驱动编程](http://www.cnblogs.com/lua5/archive/2011/02/01/1948760.html)
-
 - [Node.js 中文网](http://nodejs.cn/api/documentation.html)
-
 - [Node.js 英文官网](https://nodejs.org/en/)
-
 - [Node.js 菜鸟教程](http://www.runoob.com/nodejs/nodejs-tutorial.html)
-
 - [CNode：Node.js专业中文社区](https://cnodejs.org/)
-
 - [深入浅出Node.js(朴灵)完整扫描版.pdf](http://download.csdn.net/download/u010733705/9555797)
-
 - [HTTP Keep-Alive是什么？如何工作？](http://www.nowamagic.net/academy/detail/23350305)
-
 - [浏览器User-agent String里的历史故事](http://www.nowamagic.net/librarys/veda/detail/2576)
-
 - [art-template API](https://aui.github.io/art-template/docs/api.html)
-
 - [yarn与npm的命令行小结](http://www.jb51.net/article/95199.htm)
-
 - [nodejs的历史由来](http://blog.csdn.net/u012028371/article/details/54884056)
+- [art-template官方文档](https://aui.github.io/art-template/docs/)
+- [博客园官网](https://www.cnblogs.com/)
+- [art-template 官方文档](https://aui.github.io/art-template/)
+- [ES6 - 模板字符串](http://www.infoq.com/cn/articles/es6-in-depth-template-string)
+- [js中的数组对象排序](http://www.cnblogs.com/xljzlw/p/3694861.html)
+- [i5ting/tocmd.npm 将MD转换为HTML](https://github.com/i5ting/tocmd.npm)
+- [JavaScript 语句后应该加分号么？](https://www.zhihu.com/question/20298345)
+- [art-template官方文档中文](https://aui.github.io/art-template/zh-cn/index.html)
+- [felixge/node-formidable](https://github.com/felixge/node-formidable)
+- [Node中使用 302 重定向](https://stackoverflow.com/questions/4062260/nodejs-redirect-url)
+- [Nodejs基础：路径处理模块path总结](http://www.cnblogs.com/chyingp/p/node-learning-guide-path.html)
+- [FormData 对象的使用](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects)
+- [深入浅出ES6（六）：解构 Destructuring](http://www.infoq.com/cn/articles/es6-in-depth-destructuring/)
+- [MDN - Array.prototype.some()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+- [URL中的hash（井号）](http://www.cnblogs.com/joyho/articles/4430148.html)
 
 ### Node.js 的起源
 
@@ -185,7 +187,9 @@
 - 使用require('核心模块标识符')，导入需要的模块。
 - 通过官方提供的API，调用模块中对应的方法，实现我们的功能
 
-### 使用os模块查看cpu信息
+### os模块
+
+- 用来查看CPU信息
 
 ```javascript
 var os=require('os');//导入核心模块
@@ -195,7 +199,9 @@ console.log(result);
 
 ![node](img/node04.png)
 
-### 使用fs模块来操作文件
+### fs模块
+
+#### 用来操作文件
 
 - fs.readFile
 
@@ -266,20 +272,11 @@ console.log(result);
 
     ![node](img/node09.png)
 
-### fs模块中路径问题
+#### fs模块中路径问题
 
 - __dirname 表示，当前这个JS文件所处的绝对目录
 - __filename表示，当前这个JS文件的文件名
 - 使用 __dirname 做一层拼接，防止操作文件的时候，相对路径随着执行Node命令的目录而改变。
-
-### 箭头函数
-
-- 箭头函数内部的this，永远和箭头函数外部的this保持一致
-- 箭头函数的标准形式，() => {}
-  - 变形1：如果箭头函数，左侧参数列表中，只有一个参数，可以省略 ()，x => {}
-  - 变形2：如果箭头函数右侧函数体中，只有一句代码，那么，{}可以省略， () => console.log(123)
-  - 变形3：根据上面两条规范，可以得到变形3，左侧只有一个参数，右侧只有一行代码x => console.log(x)
-  - 注意：如果省略了函数体的 {} ，则函数体中代码执行的结果会被默认的当作返回值 return 出去，当作此箭头函数的调用返回值。
 
 ### http模块
 
@@ -503,6 +500,116 @@ console.log(result);
   - 资源请求路径（html,css,js,image），对于后端来说，只一个标识符而已**，**并不一定非要对应实际的文件物理路径
   - 为了开发方便（说白了就是为了写HTML的时候有路径只能提示），我们一般都期望把资源的请求路径和实际文件的物理路径对应上
 
+### path模块
+
+- 拼接路径  path.join
+
+- 获取文件名 path.basename(path[, ext])
+
+- 获取扩展名 path.extname(path)
+
+- 获取文件所在路径 path.dirname(path)
+
+### art-template模块
+
+  #### 服务器端渲染
+
+  - 特点：Node服务器先读取模板页面，再获取要渲染的数据，然后直接在服务器端把完整的页面渲染拼接好，然后通过网络一次性的把结果发送给浏览器去显示，注意：通过服务器端渲染，在网络中传输的是一个真正页面。
+  - 优点：请求次数少，速度快，对SEO友好。
+  - 缺点：服务器渲染压力大，在后端可以通过缓存机制去解决。
+
+  #### 客户端渲染
+
+  - 特点：先访问服务器获取到模板页面，然后再通过Ajax获取要渲染的数据，拿到这两者之后，再客户端调用模板引擎，渲染得到模板字符串，然后通过JS的方式，把结果展示到页面上，真正的页面是在客户端浏览器中怼出来的，在进行网络传输的时候，第一次传输的是模板页面，第二次传输的是数据。
+  - 优点：减轻了服务器端的渲染压力
+  - 缺点：请求次数多，用户体验可能没有服务器端渲染好（白屏效果），对SEO不友好。
+
+  #### 三种方式
+
+  ```javascript
+  //基于模板名渲染模板
+  template(filename,data)
+  //将模板源代码编译成函数
+  template.compile(source,option)
+  //将模板源代码编译成函数并立即执行
+  template.render(source,data,option)
+  ```
+
+  ```javascript
+  const http = require('http');
+  const fs = require('fs');
+  const template = require('art-template');
+  const server = http.createServer();
+  server.on('request', function (req, res) {
+      var data={
+          title:'this is title',
+          list: [
+              { id: 1, name: '尼古拉斯·赵四' },
+              { id: 2, name: '托尼·屎大颗' },
+              { id: 3, name: '亚历山大·贱贱' }
+          ]
+      }
+      fs.readFile(__dirname+'/views/index.html','utf-8',(err,dataStr)=>{
+          if(err) throw err;
+        	/*conpile方法start*/
+          const render=template.compile(dataStr)
+          const htmlStr=render(data)
+          res.end(htmlStr)
+        	/*conpile方法end*/
+        	/*render方法start*/
+        	const htmlStr=template.render(dataStr,data)
+          res.end(htmlStr)
+        	/*render方法end*/
+      })
+    	/*template方法start*/
+    	//不需要文件的读取，直接根据渲染模板的名字进行渲染
+    	//第一个参数是渲染路径，第二个参数是数据
+    	var htmlStr = template(__dirname + '/views/index.html', data)
+    	res.end(htmlStr)
+    	/*template方法end*/
+  })
+  server.listen(3000, function () {
+      console.log('server listen at http://127.0.0.1:3000')
+  })
+  ```
+
+  #### 实例
+
+  - 过滤器
+    - 使用art-template中的template.defaults.imports自定义一个时间过滤器
+    - 过滤器方法中的第一个参数，永远是管道符前边的变量代表的值
+    - 调用过滤器的时候，如果需要传参数，传递过来的参数应该从function的第二个位置开始接收
+  - 获取指定目录下的所有文件
+    - fs.readdir(__dirname,(err,filenames)=>{if(err) throw err;console.log(filenames)})
+  - 获取状态
+    - fs.stat('文件名',(err,stats)=>{console.log(stats.isFile());console.log(stats.size)})
+  - 路径拼接
+    - path.join('c:\\\','a','/c')
+    - 接收多个路径片段为参数，参数个数不固定，最后以平台规定的连接符进行地址片段的连接
+  - 异步flag
+    - 异步执行的模块中加入标识flag，在模块外部设置flag是0，在模块内部flag自加，判断，当标识达到一定值的时候，再向下执行
+  - 排序
+    - if(n1>n2){return -1}else{return 1}
+    - 排完序之后，如果前面的值要放到后面值的前面位置，则返回-1
+
+
+### querystring模块
+
+- 查询字符串
+- querystring.parse(str[,sep[,eq[,options]]])
+- str要解析的URL查询字符串
+- sep用于界定查询字符串中键值对的子字符串，默认为&
+- eq用于界定查询字符串中的键与值的子字符串，默认为=
+
+## 箭头函数
+
+- 箭头函数内部的this，永远和箭头函数外部的this保持一致
+- 箭头函数的标准形式，() => {}
+  - 变形1：如果箭头函数，左侧参数列表中，只有一个参数，可以省略 ()，x => {}
+  - 变形2：如果箭头函数右侧函数体中，只有一句代码，那么，{}可以省略， () => console.log(123)
+  - 变形3：根据上面两条规范，可以得到变形3，左侧只有一个参数，右侧只有一行代码x => console.log(x)
+  - 注意：如果省略了函数体的 {} ，则函数体中代码执行的结果会被默认的当作返回值 return 出去，当作此箭头函数的调用返回值。
+
 ## 同步异步
 
 - fs的readField是异步的方法
@@ -686,6 +793,104 @@ console.log(result);
   - 如果找到了盘符根目录还找不到，则报错：cannot find module ***
 
 
+## 回调函数
+
+- 异步函数的执行结果，不能确定先后顺序，不能使用return
+
+- 调用者知道要执行什么操作，不知道异步方法什么时候执行完
+
+- 异步方法知道什么时候执行完，但是不知道执行什么操作
+
+- 在一个方法的封装中，无论方法执行成功了还是失败了，都属于方法执行的结果
+
+- 回调函数中最好把失败结果也交给调用者，让调用者去决定处理之后的过程
+
+- callback的第一个参数永远是Error对象，成功的结果从参数列表的第二个位置传递出去
+
+  ```javascript
+  const fs=require('fs')
+  function getFileSize(filePath,callback){
+      if(err) return callback(err)
+    	const size=stats.size
+      callback(null,size)
+  }
+  var result=getFileSize(__dirname+'/package.json',function(err,result){
+      if(err) return console.log('执行出错了')
+    	console.log(result)
+  })
+  ```
+
+
+## 封装的两个原则
+
+- 方法的执行结果不应该在方法内部私自处理，应该返回给调用者，让调用者决定
+
+
+- 保证封装的模块或者方法职能单一
+
+
+
+## 前端后端的比较
+- 首先要了解HTTP协议的请求-处理-响应模型
+  - 请求：浏览器中显示的任何HTML页面、JS、CSS、图片、API接口，都需要通过网络，去请求后端服务器。
+  - 处理：前端的资源请求，必然通过网络去请求后台服务器，服务器在接收到请求之后，必然有一个处理的过程，（比如读取文件、调用数据库、后端渲染模板页面等），如果前端请求的URL地址，后端没有做对应的处理，则前端肯定拿不到想要的资源。
+  - 响应：当后端把前端请求的资源处理好之后，会通过网络把资源发送给前端去解析、显示。
+- 后端服务器是Web服务的核心，如果没有服务器，前端根本获取不到任何内容。
+- 如果前端请求的资源路径，后台服务器没有做对应的处理，则前端是获取不到该资源的。
+
+## Node阶段思想转变
+
+- 浏览器中看到的任何页面和静态资源，都是Node服务器代码处理并返回的结果
+
+- 只要是资源，必然会涉及到请求-处理-响应三个过程
+- 浏览器中一个页面的请求过程：浏览器请求页面 -> Node服务器处理该请求并返回 -> 浏览器加载解析页面HTML结构和JS代码 -> 解析过程中发起静态资源的二次请求 -> 服务器处理这些二次资源请求　－> 页面加载解析完毕后正常显示
+
+## MVC和MVVM
+
+- 针对英雄列表案例
+
+![](img/node16.png)
+
+- MVC是后台分层架构思想，实现职能单一性、可维护性、可扩展性
+
+
+- MVVM是前端（视图层）的分层思想
+
+
+- MVC是站在整个项目的角度去宏观对项目进行分层，包含了后端和前端
+
+
+- MVVM只是前端的思想，并没有站在整个项目的角度，只是把MVC中View这一层单独抽离出来，针对view层进行三层划分M（model） V（view） VM（调度者） 
+- MVC中V和M数据的交互通过VM，VM分割了M和V 。每当view层要渲染数据，需要从VM中获取，如果要保存数据，需要调用VM保存到model中
+
+
+- MVVM好处，实现数据的双向绑定
+
+
+- 双向数据绑定，避免了程序员手动操作DOM，数据驱动视图
+
+
+## 例子知识点
+
+### 302重定向
+
+```javascript
+//改变跳转的路径
+res.writeHeader(302, { 'Location': '/' });
+res.end();
+```
+
+### 阻止默认表单行为
+
+e.preventDefault();
+
+### req和res
+
+res是引用类型，所以只要在res上挂载方法，无论怎样都可以访问到res上的方法
+
+chunk
+
+表示客户端提交的数据，一块一块的 
 
 
 
@@ -693,46 +898,9 @@ console.log(result);
 
 
 
-## art-template
 
-[art-template官方文档](https://aui.github.io/art-template/docs/)
 
-## 服务端渲染和客户端渲染
 
-[博客园官网](https://www.cnblogs.com/)
 
-1. 服务器端渲染
 
-- 特点：Node服务器先读取模板页面，再获取要渲染的数据，然后直接在服务器端把完整的页面渲染拼接好，然后通过网络一次性的把结果发送给浏览器去显示！【注意：通过服务器端渲染，在网络中传输的是一个真正页面】
-- 优点：请求次数少，速度快，对SEO友好
-- 缺点：服务器渲染压力大【在后端可以通过缓存机制去解决】
 
-1. 客户端渲染
-
-- 特点：先访问服务器获取到模板页面，然后再通过Ajax获取要渲染的数据，拿到这两者之后，再客户端调用模板引擎，渲染得到模板字符串，然后通过JS的方式，把结果展示到页面上！【真正的页面是在客户端浏览器中怼出来的，在进行网络传输的时候，第一次传输的是模板页面，第二次传输的是数据】
-- 优点：减轻了服务器端的渲染压力
-- 缺点：请求次数多，用户体验可能没有服务器端渲染好（白屏效果）；对SEO不友好
-
-## 使用`nodemon`来自动重启Node服务
-
-1. 运行`npm i nodemon -g`全局安装模块
-2. 使用方式 和 `node` 完全一样：
-
-- `node 要执行文件的路径`
-- `nodemon 要执行文件的路径`
-
-## 文件列表小案例
-
-## 获取文件的属性
-
-## 【重点】在优化前, 先封装一个`根据指定路径读取文件内容`的方法
-
-## 【重点】将读取文件夹的方法抽离出来，同时对error进行处理
-
-## 相关文章
-
-1. [art-template 官方文档](https://aui.github.io/art-template/)
-2. [ES6 - 模板字符串](http://www.infoq.com/cn/articles/es6-in-depth-template-string)
-3. [js中的数组对象排序](http://www.cnblogs.com/xljzlw/p/3694861.html)
-4. [i5ting/tocmd.npm 将MD转换为HTML](https://github.com/i5ting/tocmd.npm)
-5. [JavaScript 语句后应该加分号么？](https://www.zhihu.com/question/20298345)
